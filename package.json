@@ -1,0 +1,53 @@
+{
+  "name": "ocelot-template",
+  "version": "0.0.1",
+  "description": "The default template for rendering ocelot docs",
+  "main": "index.js",
+  "scripts": {
+    "build": "node_modules/.bin/webpack --config template/webpack.config.js",
+    "dev": "node_modules/.bin/webpack -w --config template/webpack.config.js --hide-modules",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robb-j/ocelot-template.git"
+  },
+  "author": "robb-j",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robb-j/ocelot-template/issues"
+  },
+  "homepage": "https://github.com/robb-j/ocelot-template#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.2",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.12.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-html": "^4.0.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "optimize-css-assets-webpack-plugin": "^3.2.0",
+    "purecss": "^1.0.0",
+    "scroll-to-element": "^2.0.0",
+    "style-loader": "^0.19.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "vue": "^2.5.9",
+    "vue-loader": "^13.5.0",
+    "vue-template-compiler": "^2.5.9",
+    "webpack": "^3.8.1"
+  }
+}

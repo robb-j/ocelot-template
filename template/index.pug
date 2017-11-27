@@ -1,0 +1,22 @@
+include includes/mixins
+
+doctype html
+html
+  head
+    title #{spec.name}
+    link(rel='shortcut icon', href='/img/favicon.png')
+    link(rel='stylesheet', href='/css/styles.css')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lora:400,700|Noto+Sans:400,700|Space+Mono')
+    meta(name='viewport', content='width=device-width,initial-scale=1,shrink-to-fit=no')
+    meta(name='theme-color', content='#009787')
+    meta(property='og:title', content=spec.name)
+    meta(property='og:description', content=spec.description)
+    meta(property='og:locale', content='en_GB')
+    meta(property='og:site_name', content=spec.name)
+  
+  body
+    #webapp
+      include includes/header
+      include includes/layout
+      include includes/footer
+    script(type='text/javascript', src='/js/app.js')

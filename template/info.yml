@@ -1,0 +1,9 @@
+name: Default
+version: 0.0.1
+link: https://andrsn.uk
+webpack: webpack.config.js
+
+assets:
+  - js
+  - css
+  - img
