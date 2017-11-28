@@ -18,7 +18,9 @@
     "url": "https://github.com/robb-j/ocelot-template/issues"
   },
   "homepage": "https://github.com/robb-j/ocelot-template#readme",
-  "dependencies": {},
+  "dependencies": {
+    "scroll-to": "0.0.2"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",

@@ -3,6 +3,9 @@ postColour = #66AAEE
 
 titleSize = 0.3em
 
+#webapp > .version:not(.active)
+  display none
+
 main
   section.group
     h2
@@ -10,6 +13,8 @@ main
     
     article.endpoint
       margin-left 1em
+      transition 0.5s margin
+      
       h3
         margin 0 0 0.3em
         font-size 1em
@@ -51,10 +56,12 @@ main
           font-size 1.2em
       
       .details
-        border-left 4px solid primary
+        border-left 4px solid secondary
         padding 0 0.6em
         margin-left 0.3em
         margin-bottom 3em
+        
+        transition 0.5s border-color
         
         .info
           margin-bottom 1.5em
@@ -81,3 +88,8 @@ main
             padding-right 0.5em
             margin-right 0.5em
             border-right 1px solid #334
+      
+      &.active
+        margin-left 0
+        .details
+          border-left-color primary

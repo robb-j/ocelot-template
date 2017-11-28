@@ -1,6 +1,6 @@
 //- Params: info, spec, version, endpoint
 
-article.endpoint(id=endpoint.id)
+article.endpoint(id=version.name+'.'+endpoint.id)
   h3
     span.method(class=endpoint.method) #{endpoint.method}
     span.url #{endpoint.url}

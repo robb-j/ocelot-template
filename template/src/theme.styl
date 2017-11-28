@@ -57,10 +57,27 @@ body
     border-bottom 1px solid darken(primary, 10%)
     padding 0.7rem
     font-size 1.7em
+    
     .title
       color white
       font-family 'Lora', serif
       text-shadow 2px 1px darken(primary, 20%)
+      &:hover
+        cursor pointer
+    
+    label.right
+      float right
+      color white
+      margin-top: 0.4em;
+      font-size 0.6em
+      
+      span.text
+        font-family: 'Lora';
+      
+      select.version-picker
+        margin-left 0.4em
+        background transparent
+        border-color white
   
   .version
     position: relative

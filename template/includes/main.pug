@@ -3,6 +3,8 @@
 main
   section.info.container
     h1.title #{spec.name}
+      |  &ndash;  
+      span.version-name #{version.name}
     if spec.description
       p.subtitle #{spec.description}
   
