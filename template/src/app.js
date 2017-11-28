@@ -55,13 +55,12 @@ on(document, 'DOMContentLoaded', event => {
   on('select.version-picker', 'change', (e, elem) => {
     
     // Scroll to the top, then set the version & hash
-    scrollTo(0, 0, { duration: 500, ease: 'inOutCube' })
-    setTimeout(() => {
-      setActiveVersion(e.target.value)
-      setWindowHash(`${e.target.value}/`)
-    }, 500)
+    window.scrollTo(0, 0)
+    setActiveVersion(e.target.value)
+    setWindowHash(`${e.target.value}/`)
   })
   
+  // Scroll to the top when clicking the header
   on('header .title', 'click', () => {
     scrollTo(0, 0, { duration: 500, ease: 'inOutCube' })
   })
