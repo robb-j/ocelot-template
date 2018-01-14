@@ -4,8 +4,8 @@
   "description": "The default template for rendering ocelot docs",
   "main": "index.js",
   "scripts": {
-    "build": "node_modules/.bin/webpack --config template/webpack.config.js",
-    "dev": "node_modules/.bin/webpack -w --config template/webpack.config.js --hide-modules",
+    "build": "webpack --config template/webpack.config.js",
+    "dev": "webpack -w --config template/webpack.config.js --hide-modules",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

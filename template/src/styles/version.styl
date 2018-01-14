@@ -1,5 +1,6 @@
 getColour = #26C65D
 postColour = #66AAEE
+deleteColour = #C23B21
 
 titleSize = 0.3em
 
@@ -33,14 +34,19 @@ main
           display inline-block
           text-align center
           
-          &.get
-            background getColour
-            color white
-            border-color darken(getColour, 10%)
+          background getColour
+          color white
+          border-color darken(getColour, 10%)
+          
           &.post
             background postColour
             color white
             border-color darken(postColour, 10%)
+          
+          &.delete
+            background deleteColour
+            color white
+            border-color darken(deleteColour, 15%)
         
         .url
           font-family spaceMono

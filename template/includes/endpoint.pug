@@ -6,8 +6,9 @@ article.endpoint(id=version.name+'.'+endpoint.id)
     span.url #{endpoint.url}
     span.name #{endpoint.name}
   .details
-    p.info #{endpoint.info || 'No info provided'}
-    //- pre #{JSON.stringify(endpoint, null, 2)}
+    if endpoint.info
+      p.info #{endpoint.info}
+    
     tabset.arguements
       if endpoint.params.length > 0
         tab(name='Params')

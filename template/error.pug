@@ -1,9 +1,30 @@
+
+mixin listTitle(name, list)
+  h2 #{list.length} #{name}#{list.length > 1 ? 's' : ''}
+
 html
   head
     title Rendering Error 
   body
-    h1 There was #{errors.length} problem#{errors.length > 0 ? 's' : ''}
+    h1 There were some issues
     
-    each error in errors
-      h2 #{error.code || error.name || 'Pug Error'}
-      pre.stack #{error.stack}
+    //- Render the fatal errors
+    if fatals && fatals.length > 0
+      +listTitle('Fatal Errors', fatals)
+      each error in fatals
+        h3 #{error.code || error.name || error.message || 'Unknown Error'}
+        pre.stack #{error.stack}
+    
+    //- Render the error messages
+    if errors && errors.length > 0
+      +listTitle('Error', errors)
+      ul
+        each message in errors
+          li #{message}
+    
+    //- Render the warnings
+    if warnings && warnings.length > 0
+      +listTitle('Warning', warnings)
+      ul
+        each message in warnings
+          li #{message}
