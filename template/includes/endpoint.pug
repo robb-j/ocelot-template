@@ -4,6 +4,7 @@ article.endpoint(id=version.name+'.'+endpoint.id)
   h3
     span.method(class=endpoint.method) #{endpoint.method}
     span.url #{endpoint.url}
+    span.id #{endpoint.id}
     span.name #{endpoint.name}
   .details
     if endpoint.info

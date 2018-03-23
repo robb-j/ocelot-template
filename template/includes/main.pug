@@ -1,16 +1,17 @@
 //- Params: info, spec, version
 
 main
-  section.info.container
-    h1.title #{spec.name}
-      |  &ndash;  
-      span.version-name #{version.name}
-    if spec.description
-      p.subtitle #{spec.description}
-  
-  each group in version.groups
-    section.group(id=group.id)
-      h2 #{group.name}
-      .endpoint-list
-        each endpoint in group.endpoints
-          include endpoint
+  .inner
+    section.info.container
+      h1.title #{spec.name}
+        |  &ndash;  
+        span.version-name #{version.name}
+      if spec.description
+        p.subtitle #{spec.description}
+    
+    each group in version.groups
+      section.group(id=group.id)
+        h2 #{group.name}
+        .endpoint-list
+          each endpoint in group.endpoints
+            include endpoint

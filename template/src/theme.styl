@@ -5,10 +5,7 @@
 @import 'styles/args-table'
 
 body
-  position relative
   margin-top 3.5em
-  padding-bottom 3.4rem
-  min-height calc(100vh - 3.5em)
   
   p
     font-family 'Lora', serif
@@ -31,8 +28,8 @@ body
     font-size 0.8em
   
   ul
-    margin: 0 0 1em;
-    padding: 0 0 0 1.5em;
+    margin: 0 0 1em
+    padding: 0 0 0 1.5em
     li
       margin-bottom 0.3em
   
@@ -46,6 +43,11 @@ body
     &:hover
       color white
       background primary
+  
+  #webapp
+    display: flex
+    flex-direction: column
+    min-height: calc(100vh - 3.5rem)
   
   header
     position fixed
@@ -68,11 +70,11 @@ body
     label.right
       float right
       color white
-      margin-top: 0.4em;
+      margin-top: 0.4em
       font-size 0.6em
       
       span.text
-        font-family: 'Lora';
+        font-family: 'Lora'
       
       select.version-picker
         margin-left 0.4em
@@ -80,32 +82,35 @@ body
         border-color white
   
   .version
-    position: relative
+    flex: 1
+    +desktop()
+      position: relative
+      padding-left: sidebarSize
     aside,main
       box-sizing border-box
       padding 0 0.7rem
     aside
-      position fixed
-      left 0
-      top 3.5em
-      bottom 0
-      width sidebarSize
-      @media (max-width: 767px)
+      position: fixed
+      top: 3.5rem
+      left: 0
+      right: 0
+      bottom: 3rem
+      max-width: sidebarSize
+      +mobile()
         display none
         
     main
-      @media (min-width: 768px)
-        margin-left sidebarSize
-        max-width 760px
+      flex: 1
+      +desktop()
+        .inner
+          max-width 760px
+          margin: 0 auto
   
   footer
-    position absolute
-    left 0; right 0; bottom 0
-    margin 0.5rem 0 0
     font-size 0.9rem
     padding  1rem
     text-align center
-    border-top 1px solid #e8e8e8
+    border-top 1px solid borderCol
     color #889
     background lightBg
     
