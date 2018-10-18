@@ -1,6 +1,6 @@
 {
   "name": "ocelot-template",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "The default template for rendering ocelot docs",
   "main": "index.js",
   "scripts": {
