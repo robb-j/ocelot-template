@@ -3,67 +3,89 @@
 const path = require('path')
 const webpack = require('webpack')
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
-function resolve(filepath) {
-  return path.resolve(__dirname, filepath)
+const resolve = filepath => path.resolve(__dirname, filepath)
+const devMode = process.env.NODE_ENV !== 'production'
+
+const postCssLoader = 'postcss-loader'
+
+const extractCssLoader = {
+  loader: MiniCssExtractPlugin.loader,
+  options: {
+    publicPath: '../css'
+  }
 }
 
 module.exports = {
-  entry: [ 'babel-polyfill', resolve('src/app.js') ],
+  mode: process.env.NODE_ENV,
+  entry: {
+    app: [ '@babel/polyfill', resolve('src/app.js') ]
+  },
   output: {
     filename: 'app.js',
     path: resolve('assets/js')
+  },
+  resolve: {
+    extensions: [ '.js', '.styl', '.vue', '.css' ]
   },
   module: {
     rules: [
       {
         test: /\.(js|vue)$/,
+        exclude: /node_modules/,
         loader: 'eslint-loader',
         enforce: 'pre',
         include: [ resolve('src') ],
-        options: {
-          formatter: require('eslint-friendly-formatter')
-        }
+        options: { formatter: require('eslint-friendly-formatter') }
       },
       {
-        test: /.vue$/,
+        test: /\.vue$/,
         loader: 'vue-loader'
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        include: [ resolve('src') ]
+        use: { loader: 'babel-loader' }
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader'
-        })
+        use: [
+          extractCssLoader,
+          'css-loader',
+          postCssLoader
+        ]
       },
       {
-        test: /\.styl$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader!stylus-loader'
-        })
+        test: /\.(styl)$/,
+        use: [
+          devMode ? 'style-loader' : extractCssLoader,
+          'css-loader',
+          'postcss-loader',
+          'stylus-loader'
+        ]
       }
     ]
   },
-  resolve: {
-    extensions: [ '.js', '.styl', '.vue', '.css' ]
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
   },
   plugins: [
-    new FriendlyErrorsPlugin(),
+    new VueLoaderPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new ExtractTextPlugin('../css/styles.css'),
-    new UglifyJsPlugin({
-      compress: { warnings: false },
-      sourceMap: true
+    new MiniCssExtractPlugin({
+      filename: '../css/[name].css',
+      chunkFilename: '../css/[id].css'
     }),
     new OptimizeCSSPlugin({
       cssProcessorOptions: { safe: true }
